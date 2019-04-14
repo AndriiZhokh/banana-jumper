@@ -20,17 +20,20 @@ class MenuScene extends Phaser.Scene {
       font: '40px'
     });
     this.add.text(this.game.config.width / 2 - 65, this.game.config.height / 2.3, 'by Andrii Zhokh');
-    this.add.text(15, this.game.config.height / 1.5, 'PRESS UP TO START', {
-      font: '30px'
-    });
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
     if (this.cong.greeting) {
       this.add.text(50, this.game.config.height / 2.1, `Congratulations your result`);
-      this.add.text(this.game.config.width / 2, this.game.config.height / 1.95, `${this.cong.result} sec`);
+      this.add.text(this.game.config.width / 2 - 20, this.game.config.height / 1.95, `${this.cong.result} sec`);
       this.add.text(120, this.game.config.height / 1.8, `try do better`);
     }
+    
+    this.add.text(15, this.game.config.height / 1.5, 'PRESS UP TO START', {
+      font: '30px'
+    });
+
+    console.log(this.add.text(70, this.game.config.height / 1.3, 'Help banana get home'));
 
     this.controls = this.add.image(175, 550, 'controls');
   }
