@@ -8,7 +8,7 @@ const config = {
   type: Phaser.AUTO,
   width: 350,
   height: 600,
-  backgroundColor: "#5f2a55",
+  backgroundColor: "4f92ff",
   scene: [
     MenuScene,
     PlayScene,
