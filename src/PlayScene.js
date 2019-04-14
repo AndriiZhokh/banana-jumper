@@ -113,7 +113,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   movePlatform() {
-    if (this.banana.y < 400) {
+    if (this.banana.y < 300) {
       this.platforms.getChildren().forEach((platform) => {
         platform.y += 4;
       });
