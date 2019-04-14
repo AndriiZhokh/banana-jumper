@@ -75,7 +75,7 @@ class PlayScene extends Phaser.Scene {
 
     if(this.cursors.up.isDown && this.banana.body.touching.down) {
       this.startGame = true;
-      this.banana.setVelocityY(-350);
+      this.banana.setVelocityY(-400);
     }
   }
 
