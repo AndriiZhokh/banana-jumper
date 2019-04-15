@@ -11,6 +11,7 @@ class PlayScene extends Phaser.Scene {
 
   preload() {
     this.background = this.load.image('sky', '../assets/sky.png');
+    this.palm = this.load.image('palm', '../assets/palm_1.png');
     this.platform = this.load.image('platform', '../assets/platform_1.png');
     this.fakePlatform = this.load.image('fake-platform', '../assets/palm_platform.png');
     this.banana = this.load.image('banana', '../assets/banana_dude.png');
@@ -19,6 +20,7 @@ class PlayScene extends Phaser.Scene {
   create() {
     this.timer = 0;
     this.background = this.add.image(175, 300, 'sky');
+    this.palm = this.add.image(125, 200, 'palm').setScale(2);
 
     this.platforms = this.add.group();
 
@@ -67,12 +69,16 @@ class PlayScene extends Phaser.Scene {
       this.banana.setVelocityX(100);
     } else {
       this.banana.setVelocityX(0);
-    }
+    }    
 
-    if(this.cursors.up.isDown && this.banana.body.touching.down) {
-      this.startGame = true;
-      this.banana.setVelocityY(-400);
-    }
+    this.platforms.getChildren().forEach(platform => {
+      if(platform.body.touching.up && platform.texture.key != 'fake-platform') {
+        if(this.cursors.up.isDown && this.banana.body.touching.down) {
+          this.startGame = true;
+          this.banana.setVelocityY(-400);
+        }
+      }
+    });
   }
 
   createOnePlatform(x, y, key) {
@@ -96,7 +102,7 @@ class PlayScene extends Phaser.Scene {
       let rand = this.randomNum(halfWidth, width - halfWidth);
       let probability = this.randomNum(0, 100);
       h -= 100;
-      if(probability > 50) {        
+      if(probability > 90) {        
         this.createOnePlatform(rand, h, 'fake-platform');
       } else {
         this.createOnePlatform(rand, h, 'platform');
@@ -135,7 +141,7 @@ class PlayScene extends Phaser.Scene {
     let probability = this.randomNum(0, 100);
 
     if (this.platforms.getChildren()[this.platforms.getChildren().length - 1].y > 100) {
-      if (probability > 50) {        
+      if (probability > 90) {        
         this.createOnePlatform(rand, 0, 'fake-platform');
       } else {
         this.createOnePlatform(rand, 0, 'platform');
