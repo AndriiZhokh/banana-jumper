@@ -33,7 +33,7 @@ class MenuScene extends Phaser.Scene {
       font: '30px'
     });
 
-    console.log(this.add.text(70, this.game.config.height / 1.3, 'Help banana get home'));
+    this.add.text(70, this.game.config.height / 1.3, 'Help banana get home');
 
     this.controls = this.add.image(175, 550, 'controls');
   }
