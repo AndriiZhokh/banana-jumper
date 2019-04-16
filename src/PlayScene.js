@@ -41,7 +41,6 @@ class PlayScene extends Phaser.Scene {
   }
   
   update() {
-
     if (this.banana.y > this.game.config.height) {
       this.scene.start('PlayGame');
       this.startGame = false;
